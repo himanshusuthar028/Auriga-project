@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Desk</title>
+    <link rel="stylesheet" href="/app/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">STUDENT MANAGEMENT</p>
+          <h1>Student Desk</h1>
+          <p class="subtitle">Add, find, update, and remove student records from one simple screen.</p>
+        </div>
+        <div class="api-status"><span></span> API connected</div>
+      </header>
+
+      <section class="stats" aria-label="Student overview">
+        <div class="stat-card"><span>Total students</span><strong id="totalStudents">0</strong></div>
+        <div class="stat-card"><span>Courses</span><strong id="totalCourses">0</strong></div>
+        <div class="stat-card accent"><span>Showing</span><strong id="showingStudents">0</strong></div>
+      </section>
+
+      <section class="workspace">
+        <div class="panel form-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">RECORD FORM</p>
+              <h2 id="formTitle">Add a student</h2>
+            </div>
+            <button id="cancelEdit" class="text-button hidden" type="button">Cancel edit</button>
+          </div>
+          <form id="studentForm">
+            <label>Full name<input name="name" placeholder="e.g. Ada Lovelace" required /></label>
+            <label>Email address<input name="email" type="email" placeholder="ada@example.com" required /></label>
+            <div class="two-columns">
+              <label>Course<input name="course" placeholder="e.g. Computing" required /></label>
+              <label>Age<input name="age" type="number" min="1" placeholder="28" required /></label>
+            </div>
+            <button class="primary-button" type="submit"><span id="submitLabel">Add student</span><span>→</span></button>
+          </form>
+          <p id="formMessage" class="message" role="status"></p>
+        </div>
+
+        <div class="panel list-panel">
+          <div class="section-heading list-heading">
+            <div>
+              <p class="eyebrow">DIRECTORY</p>
+              <h2>All students</h2>
+            </div>
+            <div class="search-box">
+              <input id="searchInput" placeholder="Search by course..." aria-label="Search by course" />
+              <button id="clearSearch" class="icon-button" type="button" title="Clear search" aria-label="Clear search">×</button>
+            </div>
+          </div>
+          <div id="listMessage" class="list-message">Loading students...</div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Student</th><th>Course</th><th>Age</th><th>Actions</th></tr></thead>
+              <tbody id="studentRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/app/app.js" defer></script>
+  </body>
+</html>
